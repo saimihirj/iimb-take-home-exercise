@@ -1,0 +1,25 @@
+name,host_institution,city,state,type,founded,website,startups_reported,count_definition,count_confidence,govt_recognition_1to5,capital_access_1to5,ecosystem_reach_1to5,focus,source_notes
+KSUM (Kerala Startup Mission),Govt of Kerala,Kochi/Thiruvananthapuram,Kerala,State agency,2012,startupmission.kerala.gov.in,6000,Startups registered/supported in state ecosystem (not strictly in-residence),Low,5,4,4,Sector agnostic,UBI Global recognition; KSUM public stats
+NSRCEL,IIM Bangalore,Bengaluru,Karnataka,Academic (B-school),2002,nsrcel.org,3100,Cumulative ventures across all programs/cohorts,Medium,4,3,5,Social/digital/consumer; women entrepreneurs,NSRCEL/Kotak CSR page; aim.gov.in
+StartupTN,Govt of Tamil Nadu,Chennai,Tamil Nadu,State agency,2018,startuptn.in,2500,Startups through state incubator network,Low,5,4,4,Sector agnostic,startuptn.in stats
+T-Hub,Govt of Telangana + IIIT-H/ISB/NALSAR,Hyderabad,Telangana,State PPP,2015,t-hub.co,2000,Startups supported across programs (600+ core incubation),Medium,5,4,5,Tech/B2B/deeptech; corporate innovation,t-hub.co; startupindia.gov.in
+CIIE.CO,IIM Ahmedabad,Ahmedabad,Gujarat,Academic (B-school),2002,ciie.co,1700,Startups accelerated/supported across programs,Medium,5,5,5,Agri/fintech/health/cleantech; seed fund,ciie.co; industry press
+STPI (Centres of Entrepreneurship),MeitY (Software Technology Parks of India),Pan-India,Multiple,Central govt body,1991,stpi.in,1400,Startups across 24 CoEs,Medium,5,3,4,Software/IT/deeptech,stpi.in; PIB
+iCreate,Govt of Gujarat,Ahmedabad,Gujarat,State autonomous body,2014,icreate.org.in,950,Cumulative startups backed,Medium,5,3,4,Emerging tech; EV; IoT; agritech,startupgrantsindia compilation
+Venture Center,CSIR-NCL,Pune,Maharashtra,Academic/Research lab,2007,venturecenter.co.in,750,Science-based startups supported,Medium,5,3,4,Life science; materials; cleantech,venturecenter.co.in
+IIT Mandi Catalyst,IIT Mandi,Mandi,Himachal Pradesh,Academic (IIT),2018,catalyst.iitmandi.ac.in,600,Startups incubated/supported,Low,4,2,3,Himalayan tech; climate; agritech,startupgrantsindia compilation
+IIT Madras Incubation Cell,IIT Madras,Chennai,Tamil Nadu,Academic (IIT),2010,incubation.iitm.ac.in,560,Deeptech startups incubated,Medium,5,4,5,Deeptech; EV; space; AI,iitm.ac.in
+SINE,IIT Bombay,Mumbai,Maharashtra,Academic (IIT),2004,sineiitb.org,550,Startups incubated,Medium,5,4,5,Deeptech; engineering; healthcare,sineiitb.org; startupgrantsindia
+SIIC,IIT Kanpur,Kanpur,Uttar Pradesh,Academic (IIT),2000,siicincubator.com,500,Startups incubated,Medium,4,3,4,Deeptech; manufacturing; healthcare,iitk.ac.in press release
+Startup Village,Kerala Startup Mission / PPP,Kochi,Kerala,PPP,2012,startupvillage.in,500,Startups incubated (physical+virtual),Medium,3,2,3,Tech startups; student entrepreneurship,New Indian Express; The Hindu
+FITT,IIT Delhi,New Delhi,Delhi,Academic (IIT),1992,fitt-iitd.in,450,Startups supported,Low,4,2,4,Deeptech; industry-academia R&D,FITT reports
+KIIT-TBI,KIIT University,Bhubaneswar,Odisha,Academic,2008,kiitincubator.in,400,Startups incubated,Medium,5,3,3,Biotech; healthcare; cleantech,kiitincubator.in
+IIMCIP,IIM Calcutta,Kolkata,West Bengal,Academic (B-school),2012,iimcip.org,300,Startups/ventures supported (ANALYST ESTIMATE),Low,4,3,4,Enterprise/social/rural ventures,Forbes India profile; estimate
+Social Alpha,Tata Trusts,Bengaluru,Karnataka,Non-profit,2016,socialalpha.org,200,Startups supported,Medium,3,4,4,Climate/agri/health deeptech,socialalpha.org
+Axilor Ventures,Infosys founders,Bengaluru,Karnataka,Private accelerator,2014,axilor.com,160,Portfolio companies,Medium,1,4,3,Enterprise/fintech/health,Axilor; press
+Zone Startups India,Zone Startups (Toronto Metropolitan Univ.),Mumbai/Bengaluru,Multiple,Private accelerator,2015,zonestartupsindia.com,150,Startups supported (ANALYST ESTIMATE),Low,1,3,3,Fintech/AI/health,estimate
+CIE-IIITH,IIIT Hyderabad,Hyderabad,Telangana,Academic,2008,cie.iiit.ac.in,140,Startups incubated,Medium,4,3,3,AI; robotics; SaaS; medtech,iiit.ac.in
+GUSEC,Gujarat University,Ahmedabad,Gujarat,Academic,2018,gusec.edu.in,100,Active incubated startups,Low,3,1,2,Sector agnostic; pre-incubation,gusec.edu.in
+IKP Knowledge Park (IKP Eden),IKP,Hyderabad/Bengaluru,Multiple,Private/non-profit,2000,ikpknowledgepark.com,250,Startups supported (ANALYST ESTIMATE),Low,2,3,3,Life science; sector agnostic,estimate
+IISc SID,Indian Institute of Science,Bengaluru,Karnataka,Academic,1997,sid.iisc.ac.in,50,Startups incubated on campus,Low,4,2,3,Deep science; cleantech; biotech,innovationsoftheworld
+Startup Oasis,Govt of Rajasthan/RajCOMP + Pink City,Jaipur,Rajasthan,Non-profit,2016,startupoasis.in,200,Startups supported (ANALYST ESTIMATE),Low,3,1,2,Sector agnostic,estimate

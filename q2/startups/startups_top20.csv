@@ -1,0 +1,21 @@
+rank,in_top20,name,legal_entity_primary,name_aliases,founded,hq_city,sub_sector,total_funding_usd_m,funding_low_usd_m,funding_high_usd_m,rank_if_low,rank_if_high,funding_confidence,status_note,website
+1,True,Ola Electric,Ola Electric Mobility Limited,Ola Electric Mobility Pvt Ltd|ANI Technologies Ola Electric|Ola Electric Technologies,2017,Bengaluru,Electric 2W / cells,1700.0,1400.0,1700.0,1,1,Low,Listed on NSE/BSE Aug-2024; funding incl. IPO,olaelectric.com
+2,True,Ather Energy,Ather Energy Limited,Ather Energy Pvt Ltd|Ather Energy Private Limited,2013,Bengaluru,Electric 2W,650.0,500.0,900.0,2,2,Low,Listed May-2025; figure approximate incl. IPO fresh issue,atherenergy.com
+3,True,Simple Energy,Simple Energy Private Limited,Simple Energy Pvt Ltd,2019,Bengaluru,Electric 2W,285.0,279.0,290.0,3,3,Medium,Private,simpleenergy.in
+4,True,Euler Motors,Euler Motors Private Limited,Euler Motors Pvt Ltd,2018,New Delhi,Commercial EV 3W/4W,229.0,229.0,229.0,4,4,Medium,Private; reported incl. debt,eulermotors.com
+5,True,Yulu,Yulu Bikes Private Limited,Yulu Bikes Pvt Ltd|Yulu Bikes,2017,Bengaluru,Shared micro-mobility / EV,213.0,198.0,228.0,5,5,Medium,Private,yulu.bike
+6,True,BluSmart,BluSmart Mobility Private Limited,Blu-Smart Mobility|Gensol BluSmart|BluSmart Mobility Pvt Ltd,2019,Gurugram,EV ride-hailing / charging,202.0,180.0,224.0,6,7,Medium,Operations disrupted 2025 (Gensol governance case),blu-smart.com
+7,True,Battery Smart,Battery Smart,Battery Smart Mobility|Battery Smart Pvt Ltd,2019,New Delhi,Battery swapping,202.0,176.0,228.0,7,5,Medium,Private,batterysmart.in
+8,True,SUN Mobility,Sun Mobility Private Limited,SUN Mobility Pvt Ltd|Sun New Energy Mobility,2018,Bengaluru,Battery swapping / energy infra,135.0,135.0,135.0,8,8,Medium,Private,sunmobility.com
+9,True,Lohum,Lohum Cleantech Private Limited,Lohum Cleantech Pvt Ltd|Lohum,2018,Greater Noida,Li-ion battery recycling / materials,128.0,120.0,135.0,10,8,Medium,Private,lohum.com
+10,True,Husk Power Systems,Husk Power Systems Private Limited,Husk Power Systems Inc|Husk Power Systems Pvt Ltd,2008,Patna/New York,Decentralised solar microgrids,126.0,125.0,127.0,9,10,Medium,Private (India+Africa operations),huskpowersystems.com
+11,True,SolarSquare,SolarSquare Energy Private Limited,Solar Square Energy Pvt Ltd|SolarSquare Energy,2015,Mumbai,Rooftop solar,113.0,113.0,114.0,11,11,Medium,Private,solarsquare.in
+12,True,Ecozen Solutions,Ecozen Solutions Private Limited,Ecozen Solutions Pvt Ltd|Ecozen,2010,Pune,Solar cold chain / pumps,107.0,107.0,107.0,12,12,Medium,Private,ecozensolutions.com
+13,True,GPS Renewables,GPS Renewables Private Limited,GPS Renewables Pvt Ltd|GPS Renewables,2012,Bengaluru,Bio-CNG / biogas,92.0,92.0,92.0,13,14,Medium,Private,gpsrenewables.com
+14,True,ChargeZone,Charge Zone,Chargezone|Charge Zone Pvt Ltd|Gensol Chargezone|Charge Zone India,2018,Vadodara,EV charging,92.0,86.0,98.0,15,13,Low,Private (Gensol-linked entity history),chargezone.co
+15,True,Log9 Materials,Log9 Materials Scientific Private Limited,Log9 Materials Scientific Pvt Ltd|Log9 Materials,2015,Bengaluru,Batteries / fast-charge cells,90.0,90.0,90.0,14,15,Medium,Private,log9materials.com
+16,True,Zypp Electric,Zypp Electric,Zypp Electric Mobility|Zypp Electric (Mobility) Pvt Ltd|Zypp Electric Private Limited,2017,Gurugram,EV-as-a-service,70.0,62.0,77.0,17,16,Medium,Private,zypp.app
+17,True,Exponent Energy,Exponent Energy Private Limited,Exponent Energy Pvt Ltd,2020,Bengaluru,EV fast-charging / packs,66.0,66.0,66.0,16,17,Medium,Private,exponent-energy.com
+18,True,Recykal,Recykal,Recykal Private Limited|Recykal Cleantech|Recykal Pvt Ltd,2018,Hyderabad,Waste/circular economy platform,60.0,59.0,60.0,18,18,Medium,Private,recykal.com
+19,True,Attero Recycling,Attero Recycling Private Limited,Attero Recycling Pvt Ltd|Attero,2008,Noida,E-waste / battery recycling,31.0,31.0,31.0,19,19,Medium,Private,attero.in
+20,True,BatX Energies,BatX Energies Private Limited,BatX Energies Pvt Ltd|BatX,2020,Gurugram,Battery recycling,19.0,18.0,19.0,20,20,Medium,Private,batx.in
