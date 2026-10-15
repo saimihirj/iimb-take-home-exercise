@@ -1,21 +1,21 @@
 #!/usr/bin/env python3
 """
-Q2.2a - Semi-automated download of RAW patent data from WIPO PATENTSCOPE for the Top-20 startups.
+Question 2.2: Semi-automated download of raw patent data from WIPO PATENTSCOPE.
 
-WHY SEMI-AUTOMATED?  PATENTSCOPE shows an image CAPTCHA to automated sessions and requires a (free) WIPO account for the
-"Download" (Excel/CSV) export. Circumventing that is neither appropriate nor reliable, so a human does the two things
-a robot must not: (1) solves the CAPTCHA once, (2) logs in once. Everything else is automated:
+PATENTSCOPE presents an image CAPTCHA to automated web drivers.
+In addition, exporting search results requires an authenticated user account.
+This script coordinates a semi-automated workflow to respect these platform controls.
+The user solves the initial CAPTCHA challenge manually and signs in once.
+The script then automates search query entry for each startup in sequence.
+Users click the export button in the open browser.
+The script captures the download event, logs the query, and saves the raw file untouched.
 
-  * a visible Chrome window is opened (Playwright, system Chrome),
-  * for each startup the query  PA:("<alias>") OR PA:("<alias>")  is typed into the simple-search box and submitted,
-  * YOU click  Download -> Excel/CSV  on the results page (the script then captures the file automatically through the
-    browser's download event and stores it, untouched, as  data/wipo_raw/<slug>__<timestamp>.<ext>),
-  * query string, result-count text and timestamp go to data/wipo_raw/download_log.csv  (audit trail).
+Users can also conduct searches manually in PATENTSCOPE.
+Manual exports can be placed directly in data/wipo_raw/ using the pattern <slug>__manual.xlsx.
 
-If the browser route is impossible, skip this script: run the same query manually in PATENTSCOPE, export, and drop
-the files in data/wipo_raw/ named  <slug>__manual.csv|xls|xlsx  - the merge script treats both identically.
-
-Usage:  python3 wipo_download.py [--only ather-energy simple-energy]
+Usage:
+    python3 wipo_download.py
+    python3 wipo_download.py --only ather-energy simple-energy
 """
 import argparse
 import csv

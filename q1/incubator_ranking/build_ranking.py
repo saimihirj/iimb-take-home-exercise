@@ -1,36 +1,33 @@
 #!/usr/bin/env python3
 """
-Q1.1 - Rank India's largest startup incubators using TWO independent methodologies
-and combine them into a Top-20.
+Question 1.1: Rank India's largest startup incubators using two independent methodologies.
+The script combines both results to identify the top 20 cohort.
 
-Method A  "Scale"      : rank by cumulative startups incubated / supported (self-reported output volume).
-Method B  "Strength"   : rank by an analyst-scored composite (govt recognition, capital access,
-                         ecosystem reach, institutional age).
-Final     "Top 20"     : mean of the two ranks (Borda-style); ties broken by Method B score, then Method A count.
+Method A evaluates scale by ranking cumulative startups supported.
+Method B evaluates institutional strength using a composite score.
+Final rankings use rank averaging with Borda count aggregation.
 
-Inputs  : candidate_pool.csv   (hand-curated from web research - see METHODOLOGY.md)
-Outputs : incubators_ranked.csv, incubators_top20.xlsx (multi-sheet)
+Inputs: candidate_pool.csv
+Outputs: incubators_ranked.csv, incubators_top20.xlsx
 
-Run:  python3 build_ranking.py
+Usage: python3 build_ranking.py
 """
 import pandas as pd
 from pathlib import Path
 
 HERE = Path(__file__).parent
-REF_YEAR = 2026                       # "today" for institutional age (task date: Oct 2026)
-
-# --- Method B weights (documented in METHODOLOGY.md) ------------------------------------------
+REF_YEAR = 2026
 W = {"govt": 0.30, "capital": 0.30, "reach": 0.25, "age": 0.15}
-AGE_CAP = 25                          # years; age score saturates at 25 yrs
+AGE_CAP = 25
 
 
 def main():
     df = pd.read_csv(HERE / "candidate_pool.csv")
 
-    # ---------------- Method A: scale ----------------
+    # Method A: Output Scale
     df["rank_A_scale"] = df["startups_reported"].rank(ascending=False, method="min").astype(int)
 
-    # ---------------- Method B: composite strength ----------------
+    # Method B: Composite Institutional Strength
     df["age_years"] = REF_YEAR - df["founded"]
     df["age_score_1to5"] = (df["age_years"].clip(upper=AGE_CAP) / AGE_CAP * 4 + 1).round(2)
     df["score_B"] = (
@@ -41,7 +38,7 @@ def main():
     ).round(3)
     df["rank_B_strength"] = df["score_B"].rank(ascending=False, method="min").astype(int)
 
-    # ---------------- Combine ----------------
+    # Combined Rank
     df["mean_rank"] = (df["rank_A_scale"] + df["rank_B_strength"]) / 2
     df = df.sort_values(["mean_rank", "score_B", "startups_reported"],
                         ascending=[True, False, False]).reset_index(drop=True)

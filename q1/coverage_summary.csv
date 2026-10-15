@@ -1,21 +1,21 @@
-site,about,home,months_total,live_about,live_home
-CIE-IIITH,39,49,57,ok,ok
-CIIE.CO,27,27,57,live_unavailable,live_unavailable
-FITT,23,14,57,live_unavailable,ok
-IIMCIP,36,43,57,ok,ok
-IISc SID,14,35,57,live_unavailable,live_unavailable
-IIT Madras Incubation Cell,7,22,57,ok,ok
-IIT Mandi Catalyst,5,9,57,live_unavailable,live_unavailable
-IKP Knowledge Park (IKP Eden),16,39,57,ok,ok
-KIIT-TBI,0,48,57,ok,ok
-KSUM (Kerala Startup Mission),46,54,57,ok,ok
-NSRCEL,38,54,57,ok,ok
-SIIC,35,51,57,ok,ok
-SINE,8,50,57,live_unavailable,ok
-STPI (Centres of Entrepreneurship),38,48,57,ok,ok
-Social Alpha,40,52,57,ok,ok
-Startup Village,1,0,57,ok,ok
-StartupTN,17,46,57,live_unavailable,ok
-T-Hub,40,51,57,ok,ok
-Venture Center,37,54,57,live_unavailable,ok
-iCreate,33,49,57,ok,ok
+site,about,home,months_total,live_about,live_home,files_with_readable_text,files_total
+CIE-IIITH,35,49,57,ok,ok,86,86
+CIIE.CO,0,27,57,live_unavailable,live_unavailable,24,27
+FITT,23,14,57,live_unavailable,ok,38,38
+IIMCIP,36,43,57,ok,ok,73,81
+IISc SID,14,35,57,live_unavailable,live_unavailable,36,49
+IIT Madras Incubation Cell,7,22,57,ok,ok,19,31
+IIT Mandi Catalyst,4,9,57,live_unavailable,live_unavailable,13,13
+IKP Knowledge Park (IKP Eden),16,39,57,ok,ok,57,57
+KIIT-TBI,0,48,57,ok,ok,50,50
+KSUM (Kerala Startup Mission),46,54,57,ok,ok,102,102
+NSRCEL,37,54,57,ok,ok,93,93
+SIIC,29,51,57,ok,ok,79,82
+SINE,8,50,57,live_unavailable,ok,7,59
+STPI (Centres of Entrepreneurship),38,48,57,ok,ok,88,88
+Social Alpha,34,52,57,ok,ok,88,88
+Startup Village,1,0,57,ok,ok,1,3
+StartupTN,15,46,57,live_unavailable,ok,44,62
+T-Hub,36,51,57,ok,ok,89,89
+Venture Center,28,54,57,live_unavailable,ok,71,83
+iCreate,33,49,57,ok,ok,84,84

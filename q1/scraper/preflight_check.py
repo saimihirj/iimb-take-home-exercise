@@ -1,4 +1,4 @@
-"""Pre-flight check: for each top-20 site report live status (several URL variants), Wayback month coverage, about links."""
+"""Diagnostic script checking domain reachability, archive coverage, and about links for each incubator."""
 import csv
 from concurrent.futures import ThreadPoolExecutor
 import wayback_scraper as w

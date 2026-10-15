@@ -1,31 +1,25 @@
 #!/usr/bin/env python3
 """
-Q1.2 - Automated collection of HOME and ABOUT-US pages for the Top-20 incubators:
-        (i)  CURRENT website  -> fetched live today
-        (ii) ARCHIVED website -> Internet Archive (Wayback Machine): the EARLIEST successful (HTTP 200,
-                                 text/html) snapshot in EACH calendar month, Jan-2022 ... Sep-2026
-                                 (57 months x 2 page types x 20 sites).
+Question 1.2: Automated collection of homepage and about page HTML files for the top 20 incubators.
 
-Design summary (details in README.md)
--------------------------------------
-1. Read the Top-20 list from ../incubator_ranking/incubators_ranked.csv (column `website`).
-2. HOMEPAGE   : one Wayback CDX query for the root URL. `collapse=timestamp:6` keeps only the first capture of every
-                YYYYMM, which is exactly "earliest available page every month".
-3. ABOUT PAGE : the about-us URL differs per site (and changes over time), so we
-                  a) DISCOVER candidate about URLs from the live homepage + a few archived homepages (anchor text/href
-                     containing "about" / "who we are"), and add common URL patterns (/about, /about-us ...);
-                  b) run the same monthly CDX query for every candidate;
-                  c) per month choose the candidate with the best overall coverage (keeps the series consistent), and
-                     take its earliest capture in that month (ties -> earlier timestamp).
-4. DOWNLOAD   : raw archived bytes via the `id_` flavour of the Wayback URL (no Wayback toolbar / rewritten links).
-5. LOGGING    : every (site, page type, month) gets a row in manifest.csv - including months with NO snapshot, so gaps are
-                documented rather than silently skipped. Script is RESUMABLE (existing files are not re-downloaded).
+The scraper collects two distinct data streams.
+First, it retrieves current web pages through live HTTP requests.
+Second, it collects historical captures from the Internet Archive Wayback Machine.
+The collection captures the earliest successful HTTP 200 HTML snapshot in each calendar month.
+The archival timeline extends from January 2022 through September 2026.
 
-Usage
------
-    python3 wayback_scraper.py                     # everything (top 20)
-    python3 wayback_scraper.py --sites NSRCEL SINE # subset (matched against slug / name)
-    python3 wayback_scraper.py --skip-live         # archive only
+Design Summary
+1. The script reads the top 20 incubator list from the ranking dataset.
+2. For homepages, the script submits monthly CDX queries for root domain records.
+3. For about pages, the script detects candidate paths across live links, archival captures, and common URL patterns.
+4. The candidate path with the highest temporal coverage is selected for each monthly period.
+5. Snapshot downloads retrieve raw original bytes using the raw capture format.
+6. Execution logs capture every monthly interval in manifest.csv, including historical snapshot gaps.
+
+Usage:
+    python3 wayback_scraper.py
+    python3 wayback_scraper.py --sites NSRCEL SINE
+    python3 wayback_scraper.py --skip-live
     python3 wayback_scraper.py --start 2022-01 --end 2026-09
 """
 import argparse
@@ -149,6 +143,24 @@ def cdx_monthly(url, start, end):
 # ----------------------------------------------------------------------------------------------------------------------
 ABOUT_RE = re.compile(r"about|who[\s-]?we[\s-]?are|our[\s-]?story", re.I)
 
+# A real About page has an "about"-style word as the LAST path segment (tier 2, e.g. /about-us/) or as the FIRST segment
+# of a short path (tier 1, e.g. /about/awards). Anything else is rejected. This stops blog posts whose slug merely
+# contains the word "about" (for example /news/about-38-of-startups-run-out-of-funds) from being scraped as About pages.
+_ABOUT_WORDS = re.compile(r"^(about|about-us|aboutus|about_us|aboutme|who-we-are|whoweare|our-story|about-[a-z0-9]{2,20}|"
+                          r"about(-us)?\.(php|html?|aspx))$", re.I)
+
+
+def about_tier(url):
+    """2 = canonical About URL, 1 = page under an /about/ section, 0 = not an About page (homepage, blog post, etc.)."""
+    segs = [s for s in urlparse(url).path.split("/") if s]
+    if not segs:
+        return 0                                  # the bare homepage is never an About page
+    if _ABOUT_WORDS.match(segs[-1]):
+        return 2
+    if len(segs) <= 3 and _ABOUT_WORDS.match(segs[0]):
+        return 1
+    return 0
+
 
 def extract_about_links(html, base_url):
     """Return same-site URLs from <a> tags whose text or href looks like an 'about us' link (best matches first)."""
@@ -193,7 +205,8 @@ def cdx_about_urls(home_url, start, end, limit=6):
         urls = [row[0] for row in r.json()[1:]]
     except ValueError:
         return []
-    urls = [u for u in urls if not re.search(r"\.(pdf|jpg|png|css|js)(\?|$)", u, re.I) and "?" not in u]
+    urls = [u for u in urls if not re.search(r"\.(pdf|jpg|png|css|js)(\?|$)", u, re.I) and "?" not in u
+            and about_tier(u) > 0]                 # drop blog posts etc. whose slug merely contains "about"
     urls.sort(key=lambda u: (urlparse(u).path.rstrip("/").count("/"), len(u)))
     return urls[:limit]
 
@@ -226,16 +239,20 @@ def discover_about_candidates(home_url, live_html, home_snaps, start=DEFAULT_STA
 def pick_about_per_month(cand_maps, months):
     """
     cand_maps: {candidate_url: {month: (ts, orig)}}.
-    Per month choose the candidate with the highest overall coverage (consistency across time); tie -> earliest ts.
+    Candidates that are not real About pages (about_tier == 0) are dropped. Per month the script then prefers a canonical
+    About URL (tier 2) over a sub-page (tier 1), then the candidate with the highest overall coverage (consistency across
+    time), then the earliest timestamp. A month with no valid candidate is recorded as a gap instead of a wrong page.
     """
+    cand_maps = {c: m for c, m in cand_maps.items() if about_tier(c) > 0}
     coverage = {c: len(m) for c, m in cand_maps.items()}
     chosen = {}
     for ym in months:
-        options = [(-coverage[c], m[ym][0], c) for c, m in cand_maps.items() if ym in m]
+        options = [(-about_tier(c), -coverage[c], m[ym][0], c) for c, m in cand_maps.items() if ym in m]
         if options:
-            _, ts, c = min(options)
+            _, _, ts, c = min(options)
             chosen[ym] = (ts, cand_maps[c][ym][1], c)
     return chosen
+
 
 
 # ----------------------------------------------------------------------------------------------------------------------

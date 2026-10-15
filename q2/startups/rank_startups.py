@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
-"""Q2.1 - Rank India's largest environment (climate/cleantech) startups by total external funding raised (USD m).
-Excludes rows flagged startup_in_scope == 'N'. Output: startups_top20.csv / .xlsx"""
+"""
+Question 2.1: Rank India's largest environment startups by cumulative venture funding.
+The script filters out candidates outside the operational scope.
+Outputs: startups_top20.csv and startups_top20.xlsx
+"""
 import pandas as pd
 from pathlib import Path
 
@@ -10,7 +13,7 @@ scope = df[df.startup_in_scope == "Y"].copy()
 scope = scope.sort_values(["total_funding_usd_m", "funding_low_usd_m"], ascending=False).reset_index(drop=True)
 scope["rank"] = scope.index + 1
 scope["in_top20"] = scope["rank"] <= 20
-# robustness: rank using the LOW and HIGH ends of the funding range -> shows how stable the cut-off is
+# Sensitivity test evaluating rankings against minimum and maximum reported figures
 scope["rank_if_low"] = scope.funding_low_usd_m.rank(ascending=False, method="min").astype(int)
 scope["rank_if_high"] = scope.funding_high_usd_m.rank(ascending=False, method="min").astype(int)
 scope = scope.drop(columns=["rank_seed"])
